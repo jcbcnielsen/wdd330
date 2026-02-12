@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Study Buddy</title>
+    <meta name="description" content="Web page for the Bible Study Buddy webapp">
+    <meta name="author" content="Jacob Nielsen">
+    <link rel="icon" href="images/favicon.ico">
+    <meta property="og:title" content="App">
+    <meta property="og:site_name" content="Bible Study Buddy">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Web page for the Bible Study Buddy webapp">
+    <meta property="og:image" content="https://jcbcnielsen.github.io/wdd330/images/open-graph.webp">
+    <meta property="og:url" content="https://jcbcnielsen.github.io/wdd330/index.html">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link id="colorModeLink" rel="stylesheet" href="styles/lightmode.css">
+    <link rel="stylesheet" href="styles/main-small.css">
+    <link rel="stylesheet" href="styles/main-large.css">
+    <script src="scripts/main.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <img src="images/logo.webp" alt="Bible Study Buddy Logo">
+        <h2>Bible Study Buddy</h2>
+        <div id="headerMenu">
+            <button id="verseDayButton">Verse of the Day</button>
+            <button id="colorModeButton"></button>
+        </div>
+        <button id="menuButton"></button>
+        <dialog id="verseDayDialog"></dialog>
+    </header>
+
+    <main>
+        <div id="chapterSelectSection">
+            <select id="bookSelect">
+
+            </select>
+            <select id="chapterSelect">
+
+            </select>
+        </div>
+
+        <div id="firstChapterColumn" class="chapterColumn">
+            <select id="firstColumnTranslationSelect">
+
+            </select>
+            <button id="columnShowButton"></button>
+            <div id="firstColumnContent" class="chapterContent"></div>
+        </div>
+
+        <div id="secondChapterColumn" class="chapterColumn">
+            <select id="secondColumnTranslationSelect">
+
+            </select>
+            <button id="columnHideButton"></button>
+            <div id="secondColumnContent" class="chapterContent"></div>
+        </div>
+
+        <div id="dictionaryColumn"></div>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
