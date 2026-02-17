@@ -1,7 +1,7 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 export default class Chapter {
-    constructor(number) {
+    constructor(number, dictionary) {
         this.number = number;
         this.column = document.getElementById(`${number}ChapterColumn`);
         this.transSelect = document.getElementById(`${number}ColumnTranslationSelect`);
@@ -9,6 +9,7 @@ export default class Chapter {
         this.chaptSelect = document.getElementById(`${number}ColumnChapterSelect`);
         this.readButton = document.getElementById(`${number}ColumnReadButton`);
         this.columnContent = document.getElementById(`${number}ColumnContent`);
+        this.dictionary = dictionary;
     }
     async init() {
         // Retrive the previously set Translation, Book,
@@ -173,26 +174,29 @@ export default class Chapter {
 
                 // Make the verse clickable
                 // before adding it to the list
-                li.addEventListener("click", pickVerse.bind(li));
+                li.addEventListener("click", this.pickVerse.bind(this, li));
                 this.columnContent.appendChild(li);
             }
         }.bind(this));
     }
-}
+    pickVerse(li) {
+        const wordList = li.innerText.split(" ");
+        li.innerText = "";
+        wordList.forEach(function (word) {
+            const span = document.createElement("span");
+            span.innerText = `${word} `;
+            span.addEventListener("click", this.pickWord.bind(this, span));
+            li.appendChild(span);
+        }.bind(this));
+    }
+    pickWord(span) {
+        // Cleanse the word of whitespace and punctuation
+        const regex = /[\s\.,:;!?]/;
+        const word = span.innerText.slice(0, span.innerText.search(regex));
 
-function pickVerse() {
-    const wordList = this.innerText.split(" ");
-    this.innerText = "";
-    wordList.forEach(function (word) {
-        const span = document.createElement("span");
-        span.innerText = `${word} `;
-        span.addEventListener("click", pickWord.bind(span));
-        this.appendChild(span);
-    }.bind(this));
-}
-
-function pickWord() {
-    console.log(this.innerText);
+        // Add the word to the dictionary
+        this.dictionary.getEntry(this.dictionary.wordList.push(word) - 1, false);
+    }
 }
 
 const translations = {
