@@ -15,7 +15,7 @@ export default class Dictionary {
         // get their entries and display them
         if (this.wordList.length) {
             for (let i = Math.max(this.wordList.length - 3, 0); i < this.wordList.length; i++) {
-                this.getEntry.bind(this, i, false)();
+                setTimeout(this.getEntry.bind(this, i, false), i * 500);
             }
         }
     }

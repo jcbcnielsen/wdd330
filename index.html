@@ -26,34 +26,39 @@
         <img src="images/logo.webp" alt="Bible Study Buddy Logo">
         <h2>Bible Study Buddy</h2>
         <div id="headerMenu">
-            <button id="verseDayButton">Verse of the Day</button>
-            <button id="colorModeButton"></button>
+            <button id="verseDayShowButton" commandfor="verseDayDialog" command="show-modal">Verse of the Day</button>
+            <button id="preferencesShowButton" commandfor="preferencesDialog" command="show-modal">Preferences</button>
         </div>
         <button id="menuButton"></button>
-        <dialog id="verseDayDialog"></dialog>
+        <dialog id="verseDayDialog">
+            <h2>Verse of the Day</h2>
+            <p id="verseDayText"></p>
+            <h3 id="verseDayReference"></h3>
+            <button id="verseDayCloseButton" commandfor="verseDayDialog" command="close">Close</button>
+        </dialog>
+        <dialog id="preferencesDialog">
+            <label><input type="checkbox" id="colorModeOpt">Dark Mode</label>
+            <label><input type="checkbox" id="verseDayShowOpt">Show the Verse of the Day on Load</label>
+            <label>Verse of the Day Translation<select id="verseDayTranslationSelect"></select></label>
+            <button id="preferencesCloseButton" commandfor="preferencesDialog" command="close">Close</button>
+        </dialog>
     </header>
 
     <main>
         <div id="firstChapterColumn" class="chapterColumn">
-            <select id="firstColumnTranslationSelect"></select>
+            <label>Translation<select id="firstColumnTranslationSelect"></select></label>
             <button id="columnShowButton"></button>
-            <select id="firstColumnBookSelect"></select>
-            <select id="firstColumnChapterSelect"></select>
-            <button id="firstColumnReadButton"></button>
-            <div class="chapterContent">
-                <ol id="firstColumnContent"></ol>
-            </div>
+            <label>Book<select id="firstColumnBookSelect"></select></label>
+            <label>Chapter<select id="firstColumnChapterSelect"></select></label>
+            <div class="chapterContent"><ol id="firstColumnContent"></ol></div>
         </div>
 
         <div id="secondChapterColumn" class="chapterColumn">
-            <select id="secondColumnTranslationSelect"></select>
+            <label>Translation<select id="secondColumnTranslationSelect"></select></label>
             <button id="columnHideButton"></button>
-            <select id="secondColumnBookSelect"></select>
-            <select id="secondColumnChapterSelect"></select>
-            <button id="secondColumnReadButton"></button>
-            <div class="chapterContent">
-                <ol id="secondColumnContent"></ol>
-            </div>
+            <label>Book<select id="secondColumnBookSelect"></select></label>
+            <label>Chapter<select id="secondColumnChapterSelect"></select></label>
+            <div class="chapterContent"><ol id="secondColumnContent"></ol></div>
         </div>
 
         <div id="dictionaryColumn"></div>

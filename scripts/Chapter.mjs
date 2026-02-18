@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, translations } from "./utils.mjs";
 
 export default class Chapter {
     constructor(number, dictionary) {
@@ -22,10 +22,6 @@ export default class Chapter {
         // either the previous or default selections
         this.buildTranslationSelect.bind(this, initTrans)();
         this.getTranslationData.bind(this, initBook, initChapt)();
-
-        // Display the contents of either the
-        // previous or default chapter
-        //this.getChapterData.bind(this)();
 
         // Add an event listener to reset the book and chapter selects when choosing a translation
         // and to set the localStorage appropriately
@@ -191,77 +187,16 @@ export default class Chapter {
     }
     pickWord(span) {
         // Cleanse the word of whitespace and punctuation
-        const regex = /[\s\.,:;!?]/;
-        const word = span.innerText.slice(0, span.innerText.search(regex));
+        const regex = /[\s\.,:;!?'"()]/;
+        let word;
+        if (span.innerText.search(regex) == 0)
+            word = span.innerText.slice(1, span.innerText.search(regex));
+        else
+            word = span.innerText.slice(0, span.innerText.search(regex));
 
         // Add the word to the dictionary
         this.dictionary.getEntry(this.dictionary.wordList.push(word) - 1, false);
     }
-}
-
-const translations = {
-    groups: [
-        {
-            name: "Old and New with Apocrypha",
-            list: [
-                {
-                    id: "eng_dra",
-                    name: "Douay-Rheims (1899)"
-                },
-                {
-                    id: "eng_kja",
-                    name: "King James Version (1611)"
-                },
-                {
-                    id: "eng_rv5",
-                    name: "Revised Version (1895)"
-                },
-                {
-                    id: "eng_web",
-                    name: "World English Bible (2020)"
-                },
-                {
-                    id: "eng_wyc2017",
-                    name: "Wycliffe with Modern Spelling (2017)"
-                }
-            ]
-        },
-        {
-            name: "Old and New Testaments",
-            list: [
-                {
-                    id: "eng_asv",
-                    name: "American Standard Version (1901)"
-                },
-                {
-                    id: "eng_gnv",
-                    name: "Geneva Bible (1599)"
-                },
-                {
-                    id: "eng_net",
-                    name: "New English Translation (2016)"
-                }
-            ]
-        },
-        {
-            name: "Old with Apocrypha",
-            list: [
-                {
-                    id: "eng_lxx",
-                    name: "Septuagint in American English (2012)"
-                }
-            ]
-        },
-        {
-            name: "Old Testament Only",
-            list: [
-                {
-                    id: "eng_jps",
-                    name: "JPS TaNaKH (1917)"
-                }
-            ]
-        }
-    ]
 }
 
 /*<optgroup label="Old and New with Apocrypha">
