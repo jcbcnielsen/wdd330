@@ -7,7 +7,6 @@ export default class Chapter {
         this.transSelect = document.getElementById(`${number}ColumnTranslationSelect`);
         this.bookSelect = document.getElementById(`${number}ColumnBookSelect`);
         this.chaptSelect = document.getElementById(`${number}ColumnChapterSelect`);
-        this.readButton = document.getElementById(`${number}ColumnReadButton`);
         this.columnContent = document.getElementById(`${number}ColumnContent`);
         this.dictionary = dictionary;
     }
@@ -168,21 +167,19 @@ export default class Chapter {
                         return previousValue;
                 }, "");
 
-                // Make the verse clickable
-                // before adding it to the list
-                li.addEventListener("click", this.pickVerse.bind(this, li));
+                // Split the verse's words into clickable span elements
+                const wordList = li.innerText.split(" ");
+                li.innerText = "";
+                wordList.forEach(function (word) {
+                    const span = document.createElement("span");
+                    span.innerText = `${word} `;
+                    span.addEventListener("click", this.pickWord.bind(this, span));
+                    li.appendChild(span);
+                }.bind(this));
+
+                // Add the verse to the list
                 this.columnContent.appendChild(li);
             }
-        }.bind(this));
-    }
-    pickVerse(li) {
-        const wordList = li.innerText.split(" ");
-        li.innerText = "";
-        wordList.forEach(function (word) {
-            const span = document.createElement("span");
-            span.innerText = `${word} `;
-            span.addEventListener("click", this.pickWord.bind(this, span));
-            li.appendChild(span);
         }.bind(this));
     }
     pickWord(span) {

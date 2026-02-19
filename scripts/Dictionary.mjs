@@ -98,26 +98,3 @@ export default class Dictionary {
         this.dialog.showModal();
     }
 }
-
-/*let word;
-if (this.wordList[index].match(regex))
-    word = this.wordList[index].slice(0, this.wordList.search(regex))
-else
-    word = this.wordList[index];*/
-
-/*<div class="dictionaryEntry">
-    <h2>{word}</h2>
-    <h3>{partOfSpeech}</h3>
-    <ul>
-        <li>{definition}</li>
-        <li>{definition}</li>
-        ...
-    </ul>
-    <h3>{partOfSpeech}</h3>
-    <ul>
-        <li>{definition}</li>
-        <li>{definition}</li>
-        ...
-    </ul>
-    ...
-</div>*/

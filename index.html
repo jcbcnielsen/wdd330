@@ -14,8 +14,14 @@
     <meta property="og:description" content="Web page for the Bible Study Buddy webapp">
     <meta property="og:image" content="https://jcbcnielsen.github.io/wdd330/images/open-graph.webp">
     <meta property="og:url" content="https://jcbcnielsen.github.io/wdd330/index.html">
-    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link id="colorModeLink" rel="stylesheet" href="styles/lightmode.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/animations.css">
     <link rel="stylesheet" href="styles/main-small.css">
     <link rel="stylesheet" href="styles/main-large.css">
     <script src="scripts/main.js" type="module"></script>
@@ -23,42 +29,41 @@
 
 <body>
     <header>
-        <img src="images/logo.webp" alt="Bible Study Buddy Logo">
         <h2>Bible Study Buddy</h2>
+        <button id="menuButton"></button>
         <div id="headerMenu">
             <button id="verseDayShowButton" commandfor="verseDayDialog" command="show-modal">Verse of the Day</button>
             <button id="preferencesShowButton" commandfor="preferencesDialog" command="show-modal">Preferences</button>
         </div>
-        <button id="menuButton"></button>
         <dialog id="verseDayDialog">
             <h2>Verse of the Day</h2>
             <p id="verseDayText"></p>
-            <h3 id="verseDayReference"></h3>
-            <button id="verseDayCloseButton" commandfor="verseDayDialog" command="close">Close</button>
+            <h4 id="verseDayReference"></h4>
+            <button commandfor="verseDayDialog" command="close">Close</button>
         </dialog>
         <dialog id="preferencesDialog">
             <label><input type="checkbox" id="colorModeOpt">Dark Mode</label>
             <label><input type="checkbox" id="verseDayShowOpt">Show the Verse of the Day on Load</label>
             <label>Verse of the Day Translation<select id="verseDayTranslationSelect"></select></label>
-            <button id="preferencesCloseButton" commandfor="preferencesDialog" command="close">Close</button>
+            <button commandfor="preferencesDialog" command="close">Close</button>
         </dialog>
     </header>
 
     <main>
-        <div id="firstChapterColumn" class="chapterColumn">
-            <label>Translation<select id="firstColumnTranslationSelect"></select></label>
-            <button id="columnShowButton"></button>
-            <label>Book<select id="firstColumnBookSelect"></select></label>
-            <label>Chapter<select id="firstColumnChapterSelect"></select></label>
-            <div class="chapterContent"><ol id="firstColumnContent"></ol></div>
-        </div>
+        <div id="chapterColumnsWrapper">
+            <div id="firstChapterColumn" class="chapterColumn">
+                <label class="translationLabel">Translation<select id="firstColumnTranslationSelect"></select></label>
+                <label>Book<select id="firstColumnBookSelect"></select></label>
+                <label>Chapter<select id="firstColumnChapterSelect"></select></label>
+                <div class="chapterContent"><ol id="firstColumnContent"></ol></div>
+            </div>
 
-        <div id="secondChapterColumn" class="chapterColumn">
-            <label>Translation<select id="secondColumnTranslationSelect"></select></label>
-            <button id="columnHideButton"></button>
-            <label>Book<select id="secondColumnBookSelect"></select></label>
-            <label>Chapter<select id="secondColumnChapterSelect"></select></label>
-            <div class="chapterContent"><ol id="secondColumnContent"></ol></div>
+            <div id="secondChapterColumn" class="chapterColumn">
+                <label class="translationLabel">Translation<select id="secondColumnTranslationSelect"></select></label>
+                <label>Book<select id="secondColumnBookSelect"></select></label>
+                <label>Chapter<select id="secondColumnChapterSelect"></select></label>
+                <div class="chapterContent"><ol id="secondColumnContent"></ol></div>
+            </div>
         </div>
 
         <div id="dictionaryColumn"></div>
@@ -66,7 +71,7 @@
     </main>
 
     <footer>
-
+        <p>&copy; Jacob Nielsen. WDD330 Final Class Project.</p>
     </footer>
 </body>
 

@@ -14,6 +14,7 @@ export function initMenu() {
 
     // Open and close the header menu with CSS
     menuButton.addEventListener("click", () => {
+        menuButton.classList.toggle("open");
         headerMenu.classList.toggle("open");
     });
 }

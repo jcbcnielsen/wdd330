@@ -1,0 +1,45 @@
+@media screen and (min-width: 721px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #menuButton {
+        display: none;
+    }
+
+    #headerMenu {
+        display: block;
+        &.open {
+            display: block;
+        }
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+
+    #dictionaryColumn {
+        position: unset;
+        margin: .5rem .5rem auto 0;
+        border: none;
+    }
+
+    .dictionaryEntry {
+        display: block;
+        max-height: fit-content;
+        margin-top: .5rem;
+        border: .125rem solid var(--accentcolor);
+        border-radius: 1rem;
+        padding: .5rem;
+        box-shadow: .125rem .125rem .125rem var(--shadowcolor);
+        ul {
+            margin-left: 1.5rem;
+        }
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
